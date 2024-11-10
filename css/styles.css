@@ -24,7 +24,7 @@ h1, h2{
 }
 
 p {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 300;
 }
 
@@ -34,6 +34,6 @@ p {
 
 
 canvas {
-    background-color: rgb(128, 88, 58);
-    color: green;
+    background-color: rgb(61, 43, 29);
+    color: rgb(246, 132, 51);
 }
