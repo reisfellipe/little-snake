@@ -1,9 +1,13 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const audio = new Audio('../assets/audios/audio.mp3');
 
 const size = 30;
 const snake= [
     { x: 240, y: 240 },
+    { x: 270, y: 240 },
+    { x: 300, y: 240 },
+    { x: 330, y: 240 },
 ]
 
 
@@ -117,6 +121,7 @@ const checkEat= () => {
 
     if (head.x === food.x && head.y === food.y){
         snake.push(head)
+        audio.play()
 
         let x = randomPosition();
         let y = randomPosition();
@@ -126,9 +131,24 @@ const checkEat= () => {
             y = randomPosition();
     }
 
-    food.x = x;
-    food.y = y;
-    food.color = randomColor();
+        food.x = x;
+        food.y = y;
+        food.color = randomColor();
+    }
+}
+
+const checkEdgeCollision = () => {
+    const head = snake[snake.length -1];
+    const canvasLimit = canvas.width - size;
+    const neckIndex = snake.length - 2;
+    const wallCollision = head.x < 0 || head.x > 570 || head.y < 0 || head.y > 570
+    const selfCollision = snake.find((position, index) => {
+        return index < neckIndex && position.x == head.x && position.y == head.y
+    })
+
+    if(wallCollision || selfCollision){
+        alert("Você perdeu!")
+    }
 }
 
 const gameLoop = () => {
@@ -139,6 +159,7 @@ const gameLoop = () => {
     moveSnake();
     drawSnake();
     checkEat();
+    checkEdgeCollision();
 
     loopId = setTimeout(() => {
         gameLoop();
@@ -163,4 +184,4 @@ document.addEventListener("keydown", ({key}) =>{
     if(key == "ArrowDown" && direction != "up") {
         direction = "down";
     }
-})}
+})
