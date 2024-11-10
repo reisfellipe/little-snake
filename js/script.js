@@ -147,8 +147,12 @@ const checkEdgeCollision = () => {
     })
 
     if(wallCollision || selfCollision){
-        alert("Você perdeu!")
+        gameOver();
     }
+}
+
+const gameOver = () => {
+    direction = undefined
 }
 
 const gameLoop = () => {
