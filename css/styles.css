@@ -55,8 +55,14 @@ canvas {
     margin-top: -10px;
 }
 
+main {
+    position: relative;
+}
+
 .menu-screen {
     position: absolute;
+    left: 30%;
+    top: 50%;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -80,7 +86,7 @@ canvas {
     padding: 10px 15px 10px 12px;
     font-size: 1rem;
     font-weight: 600;
-    color: #333;
+    color: #33333383;
     margin-top: 40px;
     display: flex;
     align-items: center;
