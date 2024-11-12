@@ -33,6 +33,14 @@ div {
     font-weight: 500;
 }
 
+span {
+    font-weight: bold;
+
+    & a{
+        color: wheat;
+        text-decoration: none;
+    }
+}
 
 
 
